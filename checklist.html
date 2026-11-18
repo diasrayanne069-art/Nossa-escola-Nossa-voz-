@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Escolar | Nossa Escola, Nossa Voz</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topo">
+    <div class="marca">
+        <div class="marca-icone">NE</div>
+        <div>
+            <h1>Nossa Escola, Nossa Voz</h1>
+            <p>Checklist da infraestrutura escolar</p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="boas-vindas">
+        <span class="etiqueta">AVALIAÇÃO DOS AMBIENTES</span>
+        <h2>Vamos observar nossa escola?</h2>
+        <p>
+            Marque a condição de cada espaço. Sua participação
+            ajuda a identificar o que precisa de atenção.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>Checklist escolar</h2>
+        <p class="descricao">
+            Selecione uma resposta para cada item observado.
+        </p>
+
+        <form id="formChecklist">
+
+            <div id="listaChecklist"></div>
+
+            <div style="margin-top:25px">
+                <label for="nomeAluno">Nome (opcional)</label>
+                <input id="nomeAluno" type="text"
+                    placeholder="Digite seu nome">
+
+                <label for="turmaAluno">Turma (opcional)</label>
+                <input id="turmaAluno" type="text"
+                    placeholder="Digite sua turma">
+            </div>
+
+            <button type="submit" class="botao">
+                Finalizar checklist
+            </button>
+
+            <p id="mensagem" role="status"></p>
+        </form>
+    </section>
+
+    <p style="margin-top:25px">
+        <a href="../index.html">← Voltar para a página inicial</a>
+    </p>
+
+</main>
+
+<footer>
+    <p>Nossa Escola, Nossa Voz · Escola Estadual Arcelina Fernandes</p>
+    <span>Participar é o primeiro passo para transformar.</span>
+</footer>
+
+<script>
+const ambientes = [
+    {
+        nome: "Salas de aula",
+        itens: ["Conservação das paredes e pisos",
+                "Condições das carteiras e mesas",
+                "Iluminação adequada",
+                "Ventilação adequada",
+                "Condições do quadro"]
+    },
+    {
+        nome: "Banheiros",
+        itens: ["Condições de limpeza",
+                "Funcionamento das torneiras",
+                "Funcionamento das descargas",
+                "Condições das portas e fechaduras"]
+    },
+    {
+        nome: "Biblioteca",
+        itens: ["Organização do espaço",
+                "Conservação dos móveis",
+                "Iluminação e ventilação"]
+    },
+    {
+        nome: "Corredores e áreas de convivência",
+        itens: ["Conservação dos pisos",
+                "Limpeza dos espaços",
+                "Iluminação adequada",
+                "Condições de circulação"]
+    },
+    {
+        nome: "Laboratórios",
+        itens: ["Conservação dos equipamentos",
+                "Organização do ambiente",
+                "Iluminação e ventilação"]
+    },
+    {
+        nome: "Acessibilidade",
+        itens: ["Acesso aos ambientes",
+                "Condições de circulação",
+                "Sinalização acessível"]
+    }
+];
+
+const lista = document.getElementById("listaChecklist");
+
+ambientes.forEach((ambiente, indice) => {
+    const bloco = document.createElement("div");
+    bloco.className = "cartao";
+    bloco.style.marginBottom = "20px";
+
+    let conteudo = `<h3>${ambiente.nome}</h3>`;
+
+    ambiente.itens.forEach((item, numero) => {
+        const nome = `ambiente${indice}_item${numero}`;
+
+        conteudo += `
+            <div style="padding:15px 0;border-bottom:1px solid #E5EAF0">
+                <p style="font-weight:600;margin-bottom:10px">${item}</p>
+                <select name="${nome}" required
+                    style="width:100%;padding:12px;border:1px solid #D5DEE8;border-radius:8px">
+                    <option value="">Selecione uma opção</option>
+                    <option value="Adequado">Adequado</option>
+                    <option value="Precisa de atenção">Precisa de atenção</option>
+                    <option value="Não se aplica">Não se aplica</option>
+                </select>
+            </div>
+        `;
+    });
+
+    bloco.innerHTML = conteudo;
+    lista.appendChild(bloco);
+});
+
+document.getElementById("formChecklist").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const respostas = Object.fromEntries(new FormData(this).entries());
+    const resultado = {
+        aluno: document.getElementById("nomeAluno").value || "Anônimo",
+        turma: document.getElementById("turmaAluno").value || "Não informada",
+        respostas: respostas
+    };
+
+    console.log("Checklist preenchido:", resultado);
+
+    document.getElementById("mensagem").textContent =
+        "Checklist preenchido! A integração para enviar as respostas à gestão será configurada na próxima etapa.";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicar problema | Nossa Escola, Nossa Voz</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .pagina {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .formulario {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(16, 46, 80, 0.08);
+        }
+
+        .campo {
+            margin-bottom: 22px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #102E50;
+        }
+
+        .campo input,
+        .campo select,
+        .campo textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd7e4;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .campo textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .botao {
+            background: #102E50;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .botao:hover {
+            background: #28649B;
+        }
+
+        .aviso {
+            background: #E4EDF7;
+            padding: 15px;
+            border-radius: 10px;
+            color: #102E50;
+            margin-bottom: 25px;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #28649B;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #mensagem {
+            margin-top: 20px;
+            color: #28649B;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="marca">
+            <div class="marca-icone">NV</div>
+            <div>
+                <strong>Nossa Escola, Nossa Voz</strong>
+                <p>Participação e cuidado com a escola</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina">
+
+        <a href="../index.html" class="voltar">← Voltar ao início</a>
+
+        <section class="boas-vindas">
+            <span class="etiqueta">PARTICIPAÇÃO ESTUDANTIL</span>
+            <h1>Comunicar um problema</h1>
+            <p>
+                Identificou algum problema na estrutura da escola?
+                Registre aqui para que a situação possa ser analisada
+                pela gestão escolar.
+            </p>
+        </section>
+
+        <div class="formulario">
+
+            <div class="aviso">
+                <strong>Importante:</strong>
+                Descreva a situação com clareza para facilitar
+                a identificação e a análise do problema.
+            </div>
+
+            <form id="formProblema">
+
+                <div class="campo">
+                    <label for="local">Onde está o problema?</label>
+                    <select id="local" required>
+                        <option value="">Selecione o espaço</option>
+                        <option>Salas de aula</option>
+                        <option>Banheiros</option>
+                        <option>Biblioteca</option>
+                        <option>Corredores e áreas de convivência</option>
+                        <option>Laboratórios</option>
+                        <option>Acessibilidade</option>
+                        <option>Iluminação e ventilação</option>
+                        <option>Outro espaço</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="categoria">Categoria do problema</label>
+                    <select id="categoria" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option>Estrutura física</option>
+                        <option>Iluminação</option>
+                        <option>Ventilação</option>
+                        <option>Equipamentos e mobiliário</option>
+                        <option>Limpeza e conservação</option>
+                        <option>Acessibilidade</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="descricao">Descreva o problema</label>
+                    <textarea id="descricao"
+                        placeholder="Conte o que aconteceu e explique onde o problema pode ser encontrado..."
+                        required></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="foto">Adicionar foto (opcional)</label>
+                    <input type="file" id="foto" accept="image/*">
+                </div>
+
+                <div class="campo">
+                    <label for="nome">Seu nome (opcional)</label>
+                    <input type="text" id="nome"
+                        placeholder="Digite seu nome">
+                </div>
+
+                <div class="campo">
+                    <label for="turma">Sua turma (opcional)</label>
+                    <input type="text" id="turma"
+                        placeholder="Ex.: 3º A PCP">
+                </div>
+
+                <button type="submit" class="botao">
+                    Registrar problema
+                </button>
+
+                <p id="mensagem"></p>
+
+            </form>
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById("formProblema")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const problema = {
+                local: document.getElementById("local").value,
+                categoria: document.getElementById("categoria").value,
+                descricao: document.getElementById("descricao").value,
+                nome: document.getElementById("nome").value,
+                turma: document.getElementById("turma").value
+            };
+
+            console.log("Problema preenchido:", problema);
+
+            document.getElementById("mensagem").textContent =
+                "Formulário preenchido! A conexão com a gestão será ativada na próxima etapa.";
+        });
+    </script>
+
+</body>
+</html>

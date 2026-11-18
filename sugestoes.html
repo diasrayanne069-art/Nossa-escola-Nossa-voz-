@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Sugestões | Nossa Escola, Nossa Voz</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .form-card {
+            background: white;
+            padding: 28px;
+            border: 1px solid #E5EAF0;
+            border-radius: 14px;
+            margin-bottom: 22px;
+        }
+
+        .form-card h3 {
+            color: #102E50;
+            margin-bottom: 12px;
+        }
+
+        .form-card p {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .campo {
+            width: 100%;
+            padding: 13px;
+            margin: 9px 0 20px;
+            border: 1px solid #D5DEE8;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #26384B;
+        }
+
+        .botao {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: #28649B;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .botao:hover {
+            background: #102E50;
+        }
+
+        .mensagem {
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #E5F5EC;
+            color: #176B45;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="marca">
+        <div class="marca-icone">NE</div>
+        <div>
+            <h1>Nossa Escola, Nossa Voz</h1>
+            <p>Espaço de participação dos estudantes</p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="boas-vindas">
+        <span class="etiqueta">PARTICIPE DA TRANSFORMAÇÃO</span>
+        <h2>Sua ideia pode fazer a diferença!</h2>
+        <p>
+            Este espaço foi criado para ouvir os estudantes.
+            Compartilhe sugestões que possam contribuir para
+            melhorar a infraestrutura e os ambientes escolares.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>Enviar uma sugestão</h2>
+        <p class="descricao">
+            Preencha os campos abaixo para registrar sua ideia.
+        </p>
+
+        <form id="formSugestao">
+
+            <div class="form-card">
+                <h3>01. Sobre sua sugestão</h3>
+
+                <label for="categoria">Categoria</label>
+                <select class="campo" id="categoria"
+                    name="categoria" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Salas de aula">Salas de aula</option>
+                    <option value="Banheiros">Banheiros</option>
+                    <option value="Biblioteca">Biblioteca</option>
+                    <option value="Corredores e convivência">Corredores e áreas de convivência</option>
+                    <option value="Laboratórios">Laboratórios</option>
+                    <option value="Acessibilidade">Acessibilidade</option>
+                    <option value="Iluminação e ventilação">Iluminação e ventilação</option>
+                    <option value="Outros">Outros</option>
+                </select>
+
+                <label for="titulo">Título da sugestão</label>
+                <input class="campo" type="text" id="titulo"
+                    name="titulo" placeholder="Ex.: Melhorar a iluminação"
+                    required>
+
+                <label for="descricao">Descreva sua sugestão</label>
+                <textarea class="campo" id="descricao"
+                    name="descricao" rows="6"
+                    placeholder="Conte sua ideia e explique como ela poderia ajudar..."
+                    required></textarea>
+            </div>
+
+            <div class="form-card">
+                <h3>02. Identificação</h3>
+                <p>
+                    A identificação é opcional. Você também pode
+                    enviar sua sugestão anonimamente.
+                </p>
+
+                <label for="nome">Nome</label>
+                <input class="campo" type="text" id="nome"
+                    name="nome" placeholder="Seu nome (opcional)">
+
+                <label for="turma">Turma</label>
+                <input class="campo" type="text" id="turma"
+                    name="turma" placeholder="Sua turma (opcional)">
+            </div>
+
+            <button type="submit" class="botao">
+                Enviar minha sugestão
+            </button>
+
+            <div id="mensagem"></div>
+
+        </form>
+    </section>
+
+    <p style="margin-top:25px">
+        <a href="../index.html">← Voltar para a página inicial</a>
+    </p>
+
+</main>
+
+<footer>
+    <p>Nossa Escola, Nossa Voz · Escola Estadual Arcelina Fernandes</p>
+    <span>Participar é o primeiro passo para transformar.</span>
+</footer>
+
+<script>
+document.getElementById("formSugestao")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const dados = Object.fromEntries(
+        new FormData(this).entries()
+    );
+
+    console.log("Sugestão preenchida:", dados);
+
+    document.getElementById("mensagem").innerHTML =
+        '<div class="mensagem">Sua sugestão foi preenchida! O envio para a gestão será ativado quando conectarmos o banco de dados.</div>';
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>

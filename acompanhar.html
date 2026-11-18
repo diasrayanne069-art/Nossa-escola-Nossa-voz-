@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhar solicitação | Nossa Escola, Nossa Voz</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .pagina {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .formulario {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(16, 46, 80, 0.08);
+        }
+
+        .campo {
+            margin: 25px 0;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: 600;
+            color: #102E50;
+            margin-bottom: 10px;
+        }
+
+        .campo input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border: 1px solid #ccd7e4;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .botao {
+            background: #102E50;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .botao:hover {
+            background: #28649B;
+        }
+
+        .aviso {
+            background: #E4EDF7;
+            padding: 18px;
+            border-radius: 10px;
+            color: #102E50;
+            margin: 20px 0;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #E4EDF7;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #28649B;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="marca">
+            <div class="marca-icone">NV</div>
+            <div>
+                <strong>Nossa Escola, Nossa Voz</strong>
+                <p>Participação e cuidado com a escola</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina">
+
+        <a href="../index.html" class="voltar">← Voltar ao início</a>
+
+        <section class="boas-vindas">
+            <span class="etiqueta">ACOMPANHAMENTO</span>
+            <h1>Acompanhe sua solicitação</h1>
+            <p>
+                Consulte a situação do problema que você comunicou
+                à gestão escolar.
+            </p>
+        </section>
+
+        <div class="formulario">
+
+            <div class="aviso">
+                <strong>Como funciona?</strong>
+                <p>
+                    Ao registrar um problema, o aluno receberá um
+                    código de protocolo. Digite esse código abaixo
+                    para consultar o andamento da solicitação.
+                </p>
+            </div>
+
+            <form id="formAcompanhar">
+
+                <div class="campo">
+                    <label for="protocolo">Código do protocolo</label>
+                    <input
+                        type="text"
+                        id="protocolo"
+                        placeholder="Ex.: NV-2026-0001"
+                        required>
+                </div>
+
+                <button type="submit" class="botao">
+                    Consultar solicitação
+                </button>
+
+            </form>
+
+            <div class="resultado" id="resultado">
+                <h3>Consulta de protocolo</h3>
+                <p id="mensagem"></p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById("formAcompanhar")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const protocolo =
+                document.getElementById("protocolo").value.trim();
+
+            document.getElementById("resultado").style.display = "block";
+
+            document.getElementById("mensagem").textContent =
+                "O protocolo " + protocolo +
+                " foi informado. A consulta será ativada quando o sistema estiver conectado ao banco de dados.";
+        });
+    </script>
+
+</body>
+</html>

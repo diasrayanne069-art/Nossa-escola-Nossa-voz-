@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Escolar | Nossa Escola, Nossa Voz</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .diagnostico-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid #E5EAF0;
+            margin-bottom: 20px;
+        }
+
+        .diagnostico-card h3 {
+            color: #102E50;
+            margin-bottom: 12px;
+        }
+
+        .diagnostico-card p {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .opcao {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            margin: 7px 0;
+            background: #F4F7FB;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .opcao input {
+            accent-color: #28649B;
+        }
+
+        .campo {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #D5DEE8;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-top: 8px;
+        }
+
+        .botao {
+            background: #28649B;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 9px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .botao:hover {
+            background: #102E50;
+        }
+
+        .sucesso {
+            color: #176B45;
+            background: #E5F5EC;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="marca">
+        <div class="marca-icone">NE</div>
+        <div>
+            <h1>Nossa Escola, Nossa Voz</h1>
+            <p>Diagnóstico da infraestrutura escolar</p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="boas-vindas">
+        <span class="etiqueta">SUA OPINIÃO É IMPORTANTE</span>
+        <h2>Como você percebe a infraestrutura da nossa escola?</h2>
+        <p>
+            Responda às perguntas e contribua para identificar
+            as principais necessidades dos espaços escolares.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>Diagnóstico escolar</h2>
+        <p class="descricao">
+            Responda de acordo com sua experiência no ambiente escolar.
+        </p>
+
+        <form id="formDiagnostico">
+
+            <div class="diagnostico-card">
+                <h3>01. Como você avalia a infraestrutura geral da escola?</h3>
+
+                <label class="opcao">
+                    <input type="radio" name="avaliacaoGeral" value="Muito boa" required>
+                    Muito boa
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="avaliacaoGeral" value="Boa">
+                    Boa
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="avaliacaoGeral" value="Regular">
+                    Regular
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="avaliacaoGeral" value="Ruim">
+                    Ruim
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="avaliacaoGeral" value="Muito ruim">
+                    Muito ruim
+                </label>
+            </div>
+
+            <div class="diagnostico-card">
+                <h3>02. As condições dos espaços escolares atendem às necessidades dos alunos?</h3>
+
+                <label class="opcao">
+                    <input type="radio" name="necessidades" value="Sempre" required>
+                    Sempre
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="necessidades" value="Na maioria das vezes">
+                    Na maioria das vezes
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="necessidades" value="Às vezes">
+                    Às vezes
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="necessidades" value="Raramente">
+                    Raramente
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="necessidades" value="Nunca">
+                    Nunca
+                </label>
+            </div>
+
+            <div class="diagnostico-card">
+                <h3>03. A infraestrutura da escola interfere na sua aprendizagem?</h3>
+
+                <label class="opcao">
+                    <input type="radio" name="aprendizagem" value="Sim, muito" required>
+                    Sim, muito
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="aprendizagem" value="Sim, um pouco">
+                    Sim, um pouco
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="aprendizagem" value="Não interfere">
+                    Não interfere
+                </label>
+
+                <label class="opcao">
+                    <input type="radio" name="aprendizagem" value="Não sei responder">
+                    Não sei responder
+                </label>
+            </div>
+
+            <div class="diagnostico-card">
+                <h3>04. Quais espaços precisam de mais atenção?</h3>
+                <p>Você pode selecionar mais de uma opção.</p>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Salas de aula">
+                    Salas de aula
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Banheiros">
+                    Banheiros
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Biblioteca">
+                    Biblioteca
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Corredores e áreas de convivência">
+                    Corredores e áreas de convivência
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Laboratórios">
+                    Laboratórios
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Acessibilidade">
+                    Acessibilidade
+                </label>
+
+                <label class="opcao">
+                    <input type="checkbox" name="espacos" value="Iluminação e ventilação">
+                    Iluminação e ventilação
+                </label>
+            </div>
+
+            <div class="diagnostico-card">
+                <h3>05. Na sua opinião, o que deveria ser melhorado na escola?</h3>
+
+                <textarea
+                    class="campo"
+                    name="melhorias"
+                    rows="5"
+                    placeholder="Escreva sua opinião..."
+                    required></textarea>
+            </div>
+
+            <div class="diagnostico-card">
+                <h3>Identificação (opcional)</h3>
+
+                <label>Nome</label>
+                <input class="campo" type="text" name="nome"
+                    placeholder="Seu nome">
+
+                <label>Turma</label>
+                <input class="campo" type="text" name="turma"
+                    placeholder="Sua turma">
+            </div>
+
+            <button type="submit" class="botao">
+                Enviar diagnóstico
+            </button>
+
+            <div id="mensagem"></div>
+
+        </form>
+    </section>
+
+    <p style="margin-top:25px">
+        <a href="../index.html">← Voltar para a página inicial</a>
+    </p>
+
+</main>
+
+<footer>
+    <p>Nossa Escola, Nossa Voz · Escola Estadual Arcelina Fernandes</p>
+    <span>Participar é o primeiro passo para transformar.</span>
+</footer>
+
+<script>
+document.getElementById("formDiagnostico")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const dados = Object.fromEntries(
+        new FormData(this).entries()
+    );
+
+    dados.espacos = Array.from(
+        document.querySelectorAll('input[name="espacos"]:checked')
+    ).map(item => item.value);
+
+    console.log("Diagnóstico preenchido:", dados);
+
+    document.getElementById("mensagem").innerHTML =
+        '<div class="sucesso">Diagnóstico preenchido! A integração para envio e armazenamento online será configurada na próxima etapa.</div>';
+
+});
+</script>
+
+</body>
+</html>
